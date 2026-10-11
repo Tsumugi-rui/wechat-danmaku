@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微信弹幕 · WeChat Danmaku</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="theme-dark" data-bg="dim">
+
+<!-- 舞台：弹幕 / 弹窗 / 横幅 都渲染在这里 -->
+<div id="stage">
+  <div id="danmaku-layer"></div>
+  <div id="popup-layer" class="pos-br"></div>
+  <div id="banner-layer"></div>
+</div>
+
+<!-- 空状态提示 -->
+<div id="empty-state">
+  <div class="empty-icon">💬</div>
+  <div class="empty-title">等待微信消息…</div>
+  <div class="empty-sub">消息到达时会在这里以弹幕或弹窗形式出现</div>
+  <div class="empty-hint" id="empty-hint">若连接异常，请检查后台服务是否在运行</div>
+</div>
+
+<!-- 顶部控制条 -->
+<header id="toolbar">
+  <div class="tb-brand">
+    <span class="tb-dot" id="conn-dot"></span>
+    <span class="tb-title">微信弹幕</span>
+    <span class="tb-status" id="conn-text">连接中…</span>
+  </div>
+
+  <div class="tb-group" role="group" aria-label="展示方式">
+    <button class="tb-btn mode-btn active" data-mode="danmaku">弹幕</button>
+    <button class="tb-btn mode-btn active" data-mode="popup">弹窗</button>
+    <button class="tb-btn mode-btn" data-mode="banner">横幅</button>
+  </div>
+
+  <div class="tb-group">
+    <label class="tb-slider" title="弹幕滚动速度">
+      <span>速度</span>
+      <input type="range" id="speed" min="30" max="400" step="10" value="170">
+    </label>
+    <label class="tb-slider" title="字号">
+      <span>字号</span>
+      <input type="range" id="fontsize" min="14" max="46" step="2" value="26">
+    </label>
+  </div>
+
+  <div class="tb-group">
+    <input type="text" id="filter-input" class="tb-input" placeholder="只看包含…（逗号分隔）">
+    <button class="tb-btn" id="btn-pause">暂停</button>
+    <button class="tb-btn" id="btn-clear">清屏</button>
+    <button class="tb-btn" id="btn-test">测试</button>
+    <button class="tb-btn icon" id="btn-fullscreen" title="全屏 (F11)">⛶</button>
+    <button class="tb-btn icon" id="btn-settings" title="更多设置">⚙</button>
+  </div>
+</header>
+
+<!-- 设置面板 -->
+<aside id="settings">
+  <div class="set-row">
+    <span class="set-label">背景</span>
+    <div class="tg">
+      <button class="tb-btn s-bg active" data-bg="dim">暗色</button>
+      <button class="tb-btn s-bg" data-bg="clear">透明</button>
+      <button class="tb-btn s-bg" data-bg="light">浅色</button>
+    </div>
+  </div>
+  <div class="set-row">
+    <span class="set-label">遮罩浓度</span>
+    <input type="range" id="veil" min="0" max="90" step="5" value="55">
+    <span class="set-val" id="veil-val">55%</span>
+  </div>
+  <div class="set-row">
+    <span class="set-label">弹窗位置</span>
+    <div class="tg">
+      <button class="tb-btn s-pos active" data-pos="br">右下</button>
+      <button class="tb-btn s-pos" data-pos="tr">右上</button>
+      <button class="tb-btn s-pos" data-pos="bl">左下</button>
+      <button class="tb-btn s-pos" data-pos="tl">左上</button>
+    </div>
+  </div>
+  <div class="set-row">
+    <span class="set-label">弹窗停留</span>
+    <input type="range" id="popup-life" min="3" max="20" step="1" value="8">
+    <span class="set-val" id="popup-life-val">8s</span>
+  </div>
+  <div class="set-row">
+    <span class="set-label">提示音</span>
+    <label class="switch"><input type="checkbox" id="sound"><span class="slider-sw"></span></label>
+  </div>
+  <div class="set-row">
+    <span class="set-label">显示发送者</span>
+    <label class="switch"><input type="checkbox" id="show-sender" checked><span class="slider-sw"></span></label>
+  </div>
+  <div class="set-row">
+    <span class="set-label">显示会话名</span>
+    <label class="switch"><input type="checkbox" id="show-chat" checked><span class="slider-sw"></span></label>
+  </div>
+  <div class="set-row column">
+    <span class="set-label">消息源状态</span>
+    <div id="source-status" class="source-status">—</div>
+  </div>
+</aside>
+
+<script src="/app.js"></script>
+</body>
+</html>

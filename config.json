@@ -1,0 +1,24 @@
+{
+  "_说明": "微信弹幕配置文件。修改后重启服务生效。",
+
+  "host": "127.0.0.1",
+  "port": 8765,
+  "open_browser": true,
+
+  "sources": {
+    "wxauto": {
+      "_说明": "微信消息监听（Windows UI Automation）。watch_chats 留空时改为读取当前打开的聊天窗口。需按微信版本装库：微信 4.0~4.1.8 用 wxauto4（免费），微信 4.1.8 以上或想用新版可考虑 wxautox4（Plus 版，需激活码）；旧版 wxauto 已从 PyPI 下架。",
+      "enabled": true,
+      "interval": 0.6,
+      "watch_chats": [],
+      "include_self": false,
+      "include_system": false
+    },
+
+    "demo": {
+      "_说明": "演示数据源，播放模拟消息，不需要微信。",
+      "enabled": false,
+      "interval": 5.0
+    }
+  }
+}

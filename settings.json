@@ -1,0 +1,72 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8765,
+    "open_browser": true,
+    "_说明": "host 填 127.0.0.1 = 只有本机能推送；填 0.0.0.0 = 手机等设备也能推送到这台电脑。"
+  },
+  "sources": {
+    "demo": {
+      "enabled": false,
+      "interval": 5.0,
+      "_说明": "演示数据源，播放模拟消息，不需要微信。"
+    },
+    "wxauto": {
+      "enabled": true,
+      "interval": 0.6,
+      "watch_chats": [],
+      "include_self": false,
+      "include_system": false,
+      "_说明": "微信消息监听。微信 4.1+ 必须先唤醒无障碍树（双击 唤醒微信.bat），否则连不上。",
+      "_watch_chats说明": "留空 = 读当前打开的那个聊天窗口，切到哪个看哪个（默认）。填群名或昵称（如 [\"26届新生群\"]）则后台单独盯这几个会话，窗口切走也不影响，代价是微信会为每个会话多开一个窗口。",
+      "_include_self说明": "是否把自己发的消息也显示到屏幕上，默认 false",
+      "_include_system说明": "是否显示拍一拍、撤回提示等系统消息，默认 false"
+    }
+  },
+  "display": {
+    "danmaku_enabled": true,
+    "notify_enabled": true,
+    "region": "full",
+    "bar_height": 340,
+    "anchor": "top",
+    "speed": 190,
+    "font": 26,
+    "opacity": 1.0,
+    "dim": 1.0,
+    "density": 45,
+    "shadow": true,
+    "click_through": true,
+    "keep_top": true,
+    "frame_ms": 28,
+    "notify_pos": "br",
+    "notify_life": 6,
+    "notify_max": 4,
+    "notify_width": 320,
+    "popup_life": 8,
+    "sound": false,
+    "show_sender": true,
+    "show_chat": true,
+    "filters": [],
+    "_说明": "显示设置。弹幕与气泡通知各有独立总开关，可只开其一，也可同时开。",
+    "_danmaku_enabled说明": "弹幕（横向滚动字幕）总开关",
+    "_notify_enabled说明": "气泡通知（手机通知样式，角落滑入）总开关",
+    "_region取值": "full=全屏铺满 / top=上半屏 / bottom=下半屏 / bar=顶部条带",
+    "_anchor取值": "top / bottom，仅 bar 模式下生效",
+    "_speed说明": "弹幕速度，像素/秒",
+    "_font说明": "弹幕字号",
+    "_opacity说明": "文字不透明度 0.35~1.0。调低后文字真正半透明，桌面会透过文字显出来；背景始终完全透明。",
+    "_dim说明": "文字亮度系数 0.3~1.0，调低更柔和",
+    "_density说明": "同屏弹幕条数上限",
+    "_shadow说明": "文字描边，浅色壁纸下也能看清",
+    "_click_through说明": "鼠标穿透。关掉后弹幕层会挡住鼠标点击（不建议）",
+    "_keep_top说明": "自动保持置顶",
+    "_notify_pos取值": "br=右下角 / tr=右上角 / bl=左下角 / tl=左上角",
+    "_notify_life说明": "单个气泡在屏幕上停留几秒后自动消失",
+    "_notify_max说明": "同屏最多堆叠几个气泡，超出时最旧的先退场",
+    "_notify_width说明": "气泡卡片宽度（像素）",
+    "_show_sender说明": "弹幕里是否显示发送者昵称",
+    "_show_chat说明": "弹幕里是否显示群名",
+    "_filters说明": "屏蔽关键词。命中的消息不上屏（弹幕与通知都会跳过）。例如 [\"红包\", \"广告\"]"
+  },
+  "_说明": "微信弹幕的统一设置。推荐用图形面板改（双击 设置面板.bat）。手动改这个文件也可以——弹幕层会在 1 秒内自动应用，不用重启。"
+}

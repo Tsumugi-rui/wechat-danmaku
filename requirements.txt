@@ -1,0 +1,15 @@
+# 微信弹幕 · 依赖清单
+#
+# ★ 重要：核心程序（桌面弹幕层 / 设置面板 / 后台服务 / 浏览器展示页）
+#   只用 Python 标准库 + tkinter，不需要安装任何第三方包。
+#
+# ★ 下面这个只在「监听真实微信消息」时才需要。
+#   wxauto4 会自动带上它自己的依赖（pywin32 / comtypes / pillow /
+#   psutil / pyperclip / httpx / tenacity 等），无需手动列。
+#
+# 微信版本对应关系：
+#   微信 3.9.x        →  改用 wxauto（旧版已从 PyPI 下架，需手动装）
+#   微信 4.0 ~ 4.1.x  →  wxauto4（免费版，即本文件所列）
+#   更高版本           →  wxautox4（Plus 版，需激活码）
+
+wxauto4==41.1.7
